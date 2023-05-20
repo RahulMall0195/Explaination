@@ -36,7 +36,8 @@ This line initiates an AJAX (Asynchronous JavaScript and XML) request using jQue
 This line specifies the HTTP method to be used for the AJAX request. In this case, it is set to "POST," indicating that the request will send data to the server.
 
 3.    url: '../MktReport/SetTempData',
-
+                
+  MktReport ----Controller Name   and   SetTempData is a method in MktReport controller          
 This line specifies the URL to which the AJAX request will be sent. In this case, the URL is set to "../MktReport/SetTempData".
 
 4.    data: '{ reportId:"' + reportId + '",rptPar:"' + paraList + '",brList:"' + brList + '"}',
