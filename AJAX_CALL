@@ -1,0 +1,81 @@
+                 $.ajax({
+                    type: "POST",
+                    url: '../MktReport/SetTempData',
+                    data: '{ reportId:"' + reportId + '",rptPar:"' + paraList + '",brList:"' + brList + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    beforeSend: function () {
+                        $('#LoadingModalLabel').text('Please wait... We are processing your request.').show();
+                        $('#LoadingModal').modal('show');
+                    },
+                    success: function (r) {
+                        var url = '@Url.Action("ReportTemplate", "MktReport")';
+                        window.location.href = url;
+                        $('#spnError').text('');
+                    },
+                    complete: function (json) {
+                        $("#LoadingModal").modal('hide');
+                    },
+                    error: function (result) {
+                        alert(result.status + ': ' + result.statusText);
+                    }
+                });
+                
+                
+                
+                Certainly! Let's break down each line of the provided code:
+
+
+
+1.    $.ajax({
+
+This line initiates an AJAX (Asynchronous JavaScript and XML) request using jQuery's ajax method. It starts the configuration for the AJAX request.
+
+2.    type: "POST",
+
+This line specifies the HTTP method to be used for the AJAX request. In this case, it is set to "POST," indicating that the request will send data to the server.
+
+3.    url: '../MktReport/SetTempData',
+
+This line specifies the URL to which the AJAX request will be sent. In this case, the URL is set to "../MktReport/SetTempData".
+
+4.    data: '{ reportId:"' + reportId + '",rptPar:"' + paraList + '",brList:"' + brList + '"}',
+
+This line specifies the data to be sent along with the AJAX request. It includes the values of the variables reportId, paraList, and brList in a JSON format.
+
+5.    contentType: "application/json; charset=utf-8",
+
+This line sets the content type of the AJAX request to "application/json" with the UTF-8 character encoding. It indicates that the data being sent is in JSON format.
+
+6.    dataType: "text",
+
+This line specifies the expected data type of the response from the server. In this case, it is set to "text", indicating that the response should be treated as plain text.
+
+7.    beforeSend: function () {
+       // Code to execute before sending the request
+      },
+
+This line sets up a callback function to be executed before sending the AJAX request. In this case, the function displays a loading modal with a specific message.
+
+8.    success: function (r) {
+      // Code to execute on successful request
+      },
+
+This line sets up a callback function to be executed if the AJAX request is successful. In this case, the function sets the url variable and redirects the user to that URL, while also clearing any error messages.
+
+9.   complete: function (json) {
+      // Code to execute when the request is complete (whether success or error)
+     },
+
+This line sets up a callback function to be executed when the AJAX request is complete, regardless of whether it was successful or encountered an error. In this case, the function hides the loading modal.
+
+10.    error: function (result) {
+       // Code to execute if an error occurs
+       },
+
+This line sets up a callback function to be executed if an error occurs during the AJAX request. In this case, the function displays an alert with the status code and status text of the error.
+     
+ 11.    });
+This line marks the end of the AJAX request configuration.
+
+To summarize, the provided code performs an AJAX POST request to the specified URL with the provided data. It includes callback functions to handle different scenarios, such as before sending the request, on success, on completion, and on error.
