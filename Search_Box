@@ -1,0 +1,58 @@
+ $("#txtSearchTable").keyup(function () {
+            var value = this.value.toLowerCase().trim();
+            $("#dvBrList > .ui-checkbox").each(function (index) {
+                $(this).find("label").each(function () {
+                    var id = $(this).text().toLowerCase().trim();
+                    var not_found = (id.indexOf(value) == -1);
+                    $(this).closest('.ui-checkbox').toggle(!not_found);
+                    return not_found;
+                });
+            });
+        });
+        
+        
+        
+Let's break down each line of the code you provided:
+
+1.     $("#txtSearchTable").keyup(function () {
+
+This line attaches a keyup event handler to the element with the ID "txtSearchTable". It listens for keyup events, which occur when a key is released after being pressed.
+
+2.   var value = this.value.toLowerCase().trim();
+
+This line assigns the lowercase trimmed value of the "txtSearchTable" input element to the variable value. The toLowerCase() method converts the input value to lowercase, and the trim() method removes any leading or trailing whitespace.
+
+3.   $("#dvBrList > .ui-checkbox").each(function (index) {
+
+This line selects all elements with the class "ui-checkbox" that are direct children of the element with the ID "dvBrList". It then iterates over each selected element using the .each() method, passing an anonymous function with an index parameter.
+
+4.   $(this).find("label").each(function () {
+
+This line selects all "label" elements within the current "ui-checkbox" element and iterates over them using the .each() method, passing an anonymous function.
+
+5.   var id = $(this).text().toLowerCase().trim();
+
+This line assigns the lowercase trimmed text content of the current label element to the variable id.
+
+6.   var not_found = (id.indexOf(value) == -1);
+
+This line checks if the value (the lowercase trimmed input value) is not found within the id (the lowercase trimmed label text). If the value is not found, the not_found variable is set to true; otherwise, it is set to false.
+
+7.   $(this).closest('.ui-checkbox').toggle(!not_found);
+
+This line finds the closest ancestor element with the class "ui-checkbox" to the current label element and toggles its visibility based on the value of not_found. If not_found is true, the element is hidden; if not_found is false, the element is shown.
+
+8.   return not_found;
+
+This line returns the value of not_found from the inner .each() loop. It is used to break out of the inner loop for each label element once a match is found.
+
+9.  });
+     
+10. });
+
+These closing lines mark the end of the inner and outer loops and the event handler function.
+
+To summarize, the code attaches a keyup event handler to the "txtSearchTable" input element. 
+When a key is released, it retrieves the input value, converts it to lowercase, and trims any whitespace.
+It then iterates over each "ui-checkbox" element within the "dvBrList" element and checks if the lowercase trimmed label text contains the input value. 
+Based on the result, it shows or hides the corresponding "ui-checkbox" element.
