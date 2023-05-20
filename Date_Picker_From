@@ -1,0 +1,75 @@
+ $(function () {
+            $('#txtReportfDt1').datepicker({
+                dateFormat: 'dd/mm/yy'
+                , changeMonth: true
+                , changeYear: true
+                , maxDate: 0
+                , onClose: function (date) {
+                    //Set Minimum Date of EndDatePicker After Selected Date of StartDatePicker
+                    $('#txtReportfDt').val(DateFormat_ddmmyyy_To_yyyymmdd(date));
+
+                    $("#txtReporttDt1").datepicker("option", "minDate", new Date(DateFormat_ddmmyyy_To_yyyymmdd(date)));
+                    document.getElementById("txtReporttDt").setAttribute("min", DateFormat_ddmmyyy_To_yyyymmdd(date));
+                    $("#txtReporttDt1").focus();
+                }
+                , onSelect: function (selectedDate) {
+                    $('#txtReportfDt').val(DateFormat_ddmmyyy_To_yyyymmdd(selectedDate));
+                }
+            });
+            
+            
+            
+Sure! Let's break down each line of the code you provided:
+
+1.   $(function () {
+
+This line is a shorthand for the $(document).ready() function in jQuery. It executes the code inside the function once the DOM (Document Object Model) has finished loading.
+
+2.  $('#txtReportfDt1').datepicker({
+
+This line selects an element with the ID "txtReportfDt1" and initializes the datepicker widget on it. The datepicker widget provides a user-friendly calendar interface for selecting dates.
+
+3.  dateFormat: 'dd/mm/yy',
+
+This line sets the format in which the selected date will be displayed. In this case, the format is set to 'dd/mm/yy', representing day/month/year.
+
+4.   changeMonth: true,
+     changeYear: true,
+
+These lines enable the option to change the month and year using dropdown menus in the datepicker widget.
+
+5.    maxDate: 0,
+
+This line sets the maximum selectable date to the current date. It prevents selecting future dates.
+
+6    onClose: function (date) {
+       //Set Minimum Date of EndDatePicker After Selected Date of StartDatePicker
+        $('#txtReportfDt').val(DateFormat_ddmmyyy_To_yyyymmdd(date));
+
+        $("#txtReporttDt1").datepicker("option", "minDate", new Date(DateFormat_ddmmyyy_To_yyyymmdd(date)));
+        document.getElementById("txtReporttDt").setAttribute("min", DateFormat_ddmmyyy_To_yyyymmdd(date));
+       $("#txtReporttDt1").focus();
+     },
+
+This block defines the onClose event handler for the datepicker. It is triggered when the datepicker is closed after selecting a date. The function receives the selected date as a parameter (date).
+
+7.  Within the onClose function:
+
+    The value of the element with the ID "txtReportfDt" is set to the selected date in the format 'yyyymmdd' using a custom function DateFormat_ddmmyyy_To_yyyymmdd(date).
+    The minimum selectable date of the datepicker with the ID "txtReporttDt1" is set to the selected date using the minDate option.
+    The minimum attribute of the element with the ID "txtReporttDt" is set to the selected date in the format 'yyyymmdd'.
+    The focus is set on the datepicker with the ID "txtReporttDt1".
+
+8.  onSelect: function (selectedDate) {
+    $('#txtReportfDt').val(DateFormat_ddmmyyy_To_yyyymmdd(selectedDate));
+    },
+
+This block defines the onSelect event handler for the datepicker. It is triggered when a date is selected. The function receives the selected date as a parameter (selectedDate).
+Within the onSelect function, the value of the element with the ID "txtReportfDt" is set to the selected date in the format 'yyyymmdd' using the custom function DateFormat_ddmmyyy_To_yyyymmdd(selectedDate).
+
+9.  });
+
+This line marks the end of the code block and the closing parenthesis for the datepicker() function.
+Overall, the code initializes the datepicker widget on an element, sets various options such as date format, maximum date, change month/year options, and defines event handlers for when a date is selected or the datepicker is closed.            
+            
+            
