@@ -72,4 +72,24 @@ Within the onSelect function, the value of the element with the ID "txtReportfDt
 This line marks the end of the code block and the closing parenthesis for the datepicker() function.
 Overall, the code initializes the datepicker widget on an element, sets various options such as date format, maximum date, change month/year options, and defines event handlers for when a date is selected or the datepicker is closed.            
             
-            
+ 
+ 
+ 
+ 
+ FOR TO DATE  -----------------------------------------
+ 
+ 
+  $('#txtReporttDt1').datepicker({
+                dateFormat: 'dd/mm/yy'
+                , changeMonth: true
+                , changeYear: true
+                , maxDate: 0
+                , onClose: function (date) {
+                    //Set Minimum Date of EndDatePicker After Selected Date of StartDatePicker
+                    $('#txtReporttDt').val(DateFormat_ddmmyyy_To_yyyymmdd(date));
+                }
+                , onSelect: function (selectedDate) {
+                    $('#txtReporttDt').val(DateFormat_ddmmyyy_To_yyyymmdd(selectedDate));
+                }
+            });
+ 
