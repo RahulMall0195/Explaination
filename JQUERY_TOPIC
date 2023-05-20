@@ -1,0 +1,57 @@
+    $(document).ready(function () {
+        function init() {
+            shortcut.add("Ctrl+R", function () {
+                // Reset
+                var url = '@Url.Action("New_Customers_Business", "MktReport")';
+                window.location.href = url;
+            });
+        }
+        window.onload = init;  
+        
+ Explain each line  
+
+
+Let's break down the code line by line:
+
+javascript
+
+$(document).ready(function () {
+
+This line uses jQuery to wait for the DOM (Document Object Model) to be fully loaded before executing the code inside the function. It ensures that all HTML elements on the page are ready to be manipulated.
+
+javascript
+
+function init() {
+
+This line declares a function named init().
+
+javascript
+
+shortcut.add("Ctrl+R", function () {
+
+Assuming there is a library or custom code that defines a shortcut object, this line adds a new shortcut binding. In this case, it binds the keyboard combination "Ctrl+R" to a function.
+
+javascript
+
+// Reset
+var url = '@Url.Action("New_Customers_Business", "MktReport")';
+
+This line creates a JavaScript variable named url. It uses a server-side code snippet (@Url.Action()) to generate a URL based on the specified controller and action names. The resulting URL will be used for redirecting the page.
+
+javascript
+
+window.location.href = url;
+
+This line sets the href property of the window.location object to the value of the url variable. This effectively triggers a page redirection to the specified URL.
+
+javascript
+
+});
+
+These closing parentheses and curly braces indicate the end of the function () { ... } block passed to the shortcut.add() method.
+
+javascript
+
+});
+
+These closing parentheses and curly braces indicate the end of the $(document).ready() function block.
